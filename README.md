@@ -44,18 +44,23 @@ git submodule update
 This code is working with Python3.6. 
 
 ```bash
-# Use the module venv to create a virtual environment in a folder called venv
-python3.6 -m venv venv
-# Activate the virtual environment
-source venv/bin/activate
+# create virtualenv
+PATH="whatever/you/want/it/to/be"
+mkvirtualenv -p /usr/bin/python3.6 -a $PATH/calibration calibration
+
 # Upgrade package installer for Python
 pip install --upgrade pip
+
+# Clone original or current 
+git clone --recurse-submodules https://github.com/Jordy-VL/calibration
+#https://github.com/classifier-calibration/hands_on
+
 # Install all the required dependencies indicated in the requirements.txt file
 pip install -r binder/requirements.txt
 pip install -e lib/PyCalib
 pip install -e lib/dirichlet_python
 # Create a kernel with the current virtual environment
-python -m ipykernel install --user --name ClaCal --display-name "ClaCal handson"
+python -m ipykernel install --user --name calibration --display-name "calibration"
 ```
 
 Then you can start a Jupyter Notebook, and load the created kernel to run the
